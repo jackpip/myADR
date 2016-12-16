@@ -1,0 +1,15 @@
+<h1><%= @show.name %></h1>
+
+<h3>Add an Episode</h3>
+<%= form_for @episode do |f| %>
+  <%= f.hidden_field :show_id, value: @show.id %>
+  <%= f.label :episode_number %>
+  <%= f.text_field :episode_number %><br />
+  <%= f.submit %>
+<% end %>
+
+<br />
+
+<% @episodes.each do |episode| %>
+  <p><%= link_to episode.episode_number, episode_path(episode) %></p>
+<% end %>
