@@ -1,0 +1,39 @@
+<h1><%= @show.name %></h1>
+<h3><%= @episode.episode_number %></h3>
+
+<div class="col-xs-2">
+  Character
+</div>
+<div class="col-xs-2">
+  Start/End
+</div>
+<div class="col-xs-4">
+  Dialogue
+</div>
+<div class="col-xs-2">
+  Notes
+</div>
+
+<br class="clear"/>
+<hr class="double"/>
+
+<% @cues.each do |cue| %>
+  <% unless cue.omit %>
+    <div class="col-xs-2">
+      <%= cue.character.name %>
+    </div>
+    <div class="col-xs-2">
+      <p><%= cue.start_time %></p>
+      <p><%= cue.end_time %></p>
+    </div>
+    <div class="col-xs-4">
+      "<%= cue.dialogue %>"
+    </div>
+    <div class="col-xs-2">
+      <p><%= cue.notes %></p>
+      <p><%= cue.private_notes %></p>
+    </div>
+    <br class="clear"/>
+    <hr class="single"/>
+  <% end %>
+<% end %>

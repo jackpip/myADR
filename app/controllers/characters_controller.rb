@@ -5,6 +5,20 @@ class CharactersController < ApplicationController
     @character = character.new
   end
 
+  def index
+    @episode = Episode.find(params[:episode_id])
+    @show = @episode.show
+    @cues = @episode.cues.order(:start_time, :end_time)
+    @characters = @episode.show.characters
+  end
+
+  def show
+    @episode = Episode.find(params[:episode_id])
+    @character = Character.find(params[:id])
+    @cues = @episode.cues.select { |cue| cue.character == @character }.order(:start_time, :end_time)
+    puts params.inspect
+  end
+
   def create
     @episode = Episode.find(params[:character][:episode_id])
     @show = @episode.show

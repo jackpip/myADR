@@ -6,7 +6,7 @@ class EpisodesController < ApplicationController
     @show = @episode.show
     @character = Character.new
     @cue = Cue.new
-    @cues = @episode.cues
+    @cues = @episode.cues.order(:start_time, :end_time)
   end
 
   def new
