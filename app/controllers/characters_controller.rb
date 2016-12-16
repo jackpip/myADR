@@ -14,8 +14,9 @@ class CharactersController < ApplicationController
 
   def show
     @episode = Episode.find(params[:episode_id])
+    @show = @episode.show
     @character = Character.find(params[:id])
-    @cues = @episode.cues.select { |cue| cue.character == @character }.order(:start_time, :end_time)
+    @cues = @episode.cues.order(:start_time, :end_time).select { |cue| cue.character == @character }
     puts params.inspect
   end
 
