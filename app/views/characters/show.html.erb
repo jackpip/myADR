@@ -1,12 +1,13 @@
-<h1><%= @show.name %></h1>
-<h3><%= @episode.episode_number %></h3>
+<div class="text-center">
+  <h1>Series: <%= @show.name %></h1>
+  <h3>Episode: <%= @episode.episode_number %></h3>
+  <h3>Character: <%= @character.name %></h3>
+  <h3>Actor: <%= @character.actor %></h3>
+</div>
 
-<h1><%= @character.name %></h1>
-<h3><%= @character.actor %></h3>
-
-<div class="hidden-print">
+<div class="hidden-print text-right col-xs-3 col-xs-offset-8">
   <input type="checkbox" class="p-notes-button"/>Display Private Notes<br/>
-  <input type="button" value="Print this page" onClick="window.print()">
+  <input type="button" class="btn btn-success" value="Print Sheet" onClick="window.print()">
 </div>
 
 <br class="clear"/>
@@ -27,10 +28,14 @@
 <br class="clear"/>
 <hr class="double"/>
 
+<% character_cues = Hash.new {|hash, key| hash[key] = 101 } %>
+
 <% @cues.each do |cue| %>
   <% unless cue.omit %>
     <div class="col-xs-2">
-      <%= cue.character.name %>
+      <p><%= cue.character.name[0..2].upcase + character_cues[cue.character.name].to_s %></p>
+      <% character_cues[cue.character.name] += 1 %>
+      <p><%= cue.character.name %></p>
     </div>
     <div class="col-xs-2">
       <p><%= cue.start_time %></p>

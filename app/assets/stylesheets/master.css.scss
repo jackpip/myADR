@@ -20,3 +20,7 @@
   color: #0000EE;
   cursor: pointer;
 }
+
+input:not([type=submit], [type=button]), textarea {
+  width: 100%;
+}

@@ -1,16 +1,20 @@
-<h1>Your shows</h1>
+<div class="col-xs-8 col-xs-offset-2">
 
-<div>
-  <p class="add" data-toggle="collapse" data-target="#show-creation">Add a New Show</p>
-  <div id="show-creation" class="collapse">
-    <%= form_for @show do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name %><br />
-      <%= f.submit %>
-    <% end %>
+  <h1>Your shows</h1>
+
+  <div>
+    <p class="add" data-toggle="collapse" data-target="#show-creation">Add a New Show</p>
+    <div id="show-creation" class="collapse">
+      <%= form_for @show do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %><br />
+        <%= f.submit "Add Show", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<% @shows.each do |show| %>
-  <%= link_to show.name, show_path(show) %>
-<% end %>
+  <% @shows.each do |show| %>
+    <%= link_to show.name, show_path(show) %>
+  <% end %>
+
+</div>
