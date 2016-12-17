@@ -5,6 +5,12 @@ class CuesController < ApplicationController
     @cue = Cue.new
   end
 
+  def update
+    @cue = Cue.find(params[:id])
+    puts params.inspect
+    @cue.update_attributes(omit: params[:omit])
+  end
+
   def create
     @episode = Episode.find(params[:cue][:episode_id])
     cue_params_ = cue_params

@@ -1,12 +1,16 @@
 <h1><%= @show.name %></h1>
 
-<h3>Add an Episode</h3>
-<%= form_for @episode do |f| %>
-  <%= f.hidden_field :show_id, value: @show.id %>
-  <%= f.label :episode_number %>
-  <%= f.text_field :episode_number %><br />
-  <%= f.submit %>
-<% end %>
+<div>
+  <p class="add" data-toggle="collapse" data-target="#episode-creation">Add an Episode</p>
+  <div id="episode-creation" class="collapse">
+    <%= form_for @episode do |f| %>
+      <%= f.hidden_field :show_id, value: @show.id %>
+      <%= f.label :episode_number %>
+      <%= f.text_field :episode_number %><br />
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
 
 <br />
 

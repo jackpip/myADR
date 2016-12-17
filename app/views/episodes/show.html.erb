@@ -2,7 +2,7 @@
 <h3><%= @episode.episode_number %></h3>
 
 <div class="col-xs-6 hidden-print">
-  <p class="add" data-toggle="collapse" data-target="#cue-creation">Add a Cue +</p>
+  <p class="add" data-toggle="collapse" data-target="#cue-creation">Add a Cue</p>
   <div id="cue-creation" class="collapse">
     <%= form_for @cue do |f| %>
       <%= f.hidden_field :episode_id, value: @episode.id %>
@@ -26,7 +26,7 @@
 </div>
 
 <div class="col-xs-6 hidden-print">
-  <p data-toggle="collapse" data-target="#character-list" class="add">Character List +</p>
+  <p data-toggle="collapse" data-target="#character-list" class="add">Character List</p>
   <div id="character-list" class="collapse">
     <div class="col-xs-6">
       Character
@@ -47,7 +47,7 @@
       <hr class="single"/>
     <% end %>
   </div>
-  <p class="add" data-toggle="collapse" data-target="#character-creation">Add a Character +</p>
+  <p class="add" data-toggle="collapse" data-target="#character-creation">Add a Character</p>
   <div id="character-creation" class="collapse">
     <%= form_for [@episode, @character] do |f| %>
       <%= f.hidden_field :episode_id, value: @episode.id %>
@@ -110,9 +110,9 @@
   </div>
   <div class="col-xs-2">
     <% if cue.omit %>
-      <input type="checkbox" checked="true" class="omit">
+      <input type="checkbox" checked="true" class="omit" data-cue-id="<%= cue.id %>">
     <% else %>
-      <input type="checkbox" class="omit">
+      <input type="checkbox" class="omit" data-cue-id="<%= cue.id %>">
     <% end %>
   </div>
   <br class="clear"/>

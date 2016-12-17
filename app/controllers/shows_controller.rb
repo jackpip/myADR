@@ -2,7 +2,8 @@ class ShowsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @shows = Show.find_by(user: current_user)
+    @shows = current_user.shows
+    @show = Show.new
   end
 
   def show
@@ -16,7 +17,7 @@ class ShowsController < ApplicationController
   end
 
   def create
-    @show = Show.create(show_params)
+    @show = current_user.shows.create(show_params)
     redirect_to show_path(@show)
   end
 

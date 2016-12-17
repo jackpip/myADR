@@ -1,5 +1,16 @@
 <h1>Your shows</h1>
 
+<div>
+  <p class="add" data-toggle="collapse" data-target="#show-creation">Add a New Show</p>
+  <div id="show-creation" class="collapse">
+    <%= form_for @show do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %><br />
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+
 <% @shows.each do |show| %>
-  <%= link_to show.name, show_path(show) %> 
+  <%= link_to show.name, show_path(show) %>
 <% end %>
