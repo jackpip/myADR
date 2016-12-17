@@ -4,6 +4,13 @@
 <h1><%= @character.name %></h1>
 <h3><%= @character.actor %></h3>
 
+<div class="hidden-print">
+  <input type="checkbox" class="p-notes-button"/>Display Private Notes<br/>
+  <input type="button" value="Print this page" onClick="window.print()">
+</div>
+
+<br class="clear"/>
+
 <div class="col-xs-2">
   Character
 </div>
@@ -34,6 +41,7 @@
     </div>
     <div class="col-xs-2">
       <p><%= cue.notes %></p>
+      <p class="p-notes" style="display:none;"><%= cue.private_notes %></p>
     </div>
     <br class="clear"/>
     <hr class="single"/>
