@@ -7,7 +7,7 @@ $(document).on('turbolinks:load', ->
   $(".timestamp").keyup ->
     length = this.value.length
     fixedLength = this.value.replace(/\:/g, "").length
-    if fixedLength % 2 == 0 && length < 11 && fixedLength < 8 && fixedLength > 1 && this.value.search(/:$/) == -1
+    if fixedLength % 2 == 0 && length < 11 && fixedLength < 8 && fixedLength > 1 && this.value.search(/:$/) == -1 && this.value.search(/::/) == -1
       this.value += ":"
       #$(this).next('input').focus()
 
