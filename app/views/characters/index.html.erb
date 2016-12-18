@@ -16,10 +16,10 @@
 <div class="col-xs-2">
   Start/End
 </div>
-<div class="col-xs-4">
+<div class="col-xs-5">
   Dialogue
 </div>
-<div class="col-xs-2">
+<div class="col-xs-3">
   Notes
 </div>
 
@@ -31,7 +31,7 @@
 <% @cues.each do |cue| %>
   <% unless cue.omit %>
     <div class="col-xs-2">
-      <p><%= cue.character.abbr.upcase + "%03d" % character_cues[cue.character.name] %></p>
+      <p><%= cue.character.abbr.upcase + '_' + "%03d" % character_cues[cue.character.name] %></p>
       <% character_cues[cue.character.name] += 1 %>
       <p><%= cue.character.name %></p>
     </div>
@@ -39,10 +39,10 @@
       <p><%= cue.start_time %></p>
       <p><%= cue.end_time %></p>
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-5">
       "<%= cue.dialogue %>"
     </div>
-    <div class="col-xs-2">
+    <div class="col-xs-3">
       <p><%= cue.notes %></p>
       <p class="p-notes"><%= cue.private_notes %></p>
     </div>

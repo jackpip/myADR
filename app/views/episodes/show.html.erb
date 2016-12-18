@@ -110,7 +110,7 @@
     <%= f.hidden_field :episode_id, value: @episode.id %>
     <div class="col-xs-2">
       <p><%= f.select :character, @show.characters.map {|c| c.name}, selected: cue.character.name %></p>
-      <p><%= cue.character.abbr.upcase + "%03d" % character_cues[cue.character.name] %></p>
+      <p><%= cue.character.abbr.upcase + '_' + "%03d" % character_cues[cue.character.name] %></p>
       <% character_cues[cue.character.name] += 1 %>
     </div>
     <div class="col-xs-2">
