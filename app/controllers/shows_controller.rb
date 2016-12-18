@@ -1,5 +1,6 @@
 class ShowsController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_authorized_for_current_show, only: [:show]
 
   def index
     @shows = current_user.shows
@@ -25,6 +26,12 @@ class ShowsController < ApplicationController
 
   def show_params
     params.require(:show).permit(:name)
+  end
+
+  def require_authorized_for_current_show
+    unless Show.find(params[:id]).users.include?(current_user)
+      redirect_to shows_path, alert: "You don't have access to that show!"
+    end
   end
 
 end

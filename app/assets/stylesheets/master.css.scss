@@ -21,6 +21,6 @@
   cursor: pointer;
 }
 
-input:not([type=submit], [type=button]), textarea {
+input[type=text], textarea {
   width: 100%;
 }

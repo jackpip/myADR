@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   resources :shows
-  resources :episodes do
+  resources :episodes, param: :token do
     resources :characters
   end
   resources :cues

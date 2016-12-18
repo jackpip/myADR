@@ -1,8 +1,8 @@
 class EpisodesController < ApplicationController
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   def show
-    @episode = Episode.find(params[:id])
+    @episode = Episode.find_by(token: params[:token])
     @show = @episode.show
     @character = Character.new
     @cue = Cue.new
