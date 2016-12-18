@@ -14,17 +14,4 @@ $(document).on('turbolinks:load', ->
   $(".p-notes-button").click ->
     $(".p-notes").toggle()
 
-  $(".omit").click ->
-    cueID = $(this).data("cue-id")
-    omitValue = $(this).attr("checked") != "checked"
-    if omitValue == true
-      $(this).attr("checked", "true")
-    else
-      $(this).removeAttr("checked")
-    $.ajax(
-      url: '/cues/' + cueID,
-      type: 'PATCH',
-      data:
-        omit: omitValue
-    )
 )

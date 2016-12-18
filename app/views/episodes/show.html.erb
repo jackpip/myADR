@@ -127,6 +127,7 @@
       <%= f.check_box :omit %>
       <div class="text-right">
         <%= f.submit "Save Changes", class: 'btn btn-sm btn-primary' %>
+        <p><%= link_to 'Delete Cue', cue_path(cue, episode: @episode), data: {confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-sm btn-danger' %></p>
       </div>
     </div>
   <% end %>

@@ -22,6 +22,13 @@ class CuesController < ApplicationController
     redirect_to episode_path(@episode)
   end
 
+  def destroy
+    @cue = Cue.find(params[:id])
+    @cue.destroy
+    @episode = params[:episode]
+    redirect_to episode_path(@episode)
+  end
+
   private
 
   def cue_params
