@@ -3,6 +3,7 @@ class Episode < ApplicationRecord
   has_many :characters
   has_many :cues
 
+  validates :episode_number, presence: true
   validates :token, presence: true
   validates :token, uniqueness: true
 

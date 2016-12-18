@@ -19,7 +19,7 @@ class ShowsController < ApplicationController
 
   def create
     @show = current_user.shows.create(show_params)
-    redirect_to show_path(@show)
+    redirect_to shows_path
   end
 
   private

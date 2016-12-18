@@ -28,12 +28,12 @@
 <br class="clear"/>
 <hr class="double"/>
 
-<% character_cues = Hash.new {|hash, key| hash[key] = 101 } %>
+<% character_cues = Hash.new {|hash, key| hash[key] = 001 } %>
 
 <% @cues.each do |cue| %>
   <% unless cue.omit %>
     <div class="col-xs-2">
-      <p><%= cue.character.name[0..2].upcase + character_cues[cue.character.name].to_s %></p>
+      <p><%= cue.character.abbr.upcase + character_cues[cue.character.name].to_s %></p>
       <% character_cues[cue.character.name] += 1 %>
       <p><%= cue.character.name %></p>
     </div>
