@@ -106,29 +106,30 @@
 <% character_cues = Hash.new {|hash, key| hash[key] = 1 } %>
 
 <% @cues.each do |cue| %>
-  <div class="col-xs-2">
-    <p><%= cue.character.abbr.upcase + "%03d" % character_cues[cue.character.name] %></p>
-    <% character_cues[cue.character.name] += 1 %>
-    <p><%= cue.character.name %></p>
-  </div>
-  <div class="col-xs-2">
-    <p><%= cue.start_time %></p>
-    <p><%= cue.end_time %></p>
-  </div>
-  <div class="col-xs-4">
-    "<%= cue.dialogue %>"
-  </div>
-  <div class="col-xs-2">
-    <p><%= cue.notes %></p>
-    <p><%= cue.private_notes %></p>
-  </div>
-  <div class="col-xs-2">
-    <% if cue.omit %>
-      <input type="checkbox" checked="true" class="omit" data-cue-id="<%= cue.id %>">
-    <% else %>
-      <input type="checkbox" class="omit" data-cue-id="<%= cue.id %>">
-    <% end %>
-  </div>
+  <%= form_for cue, action: 'update' do |f| %>
+    <%= f.hidden_field :episode_id, value: @episode.id %>
+    <div class="col-xs-2">
+      <p><%= cue.character.abbr.upcase + "%03d" % character_cues[cue.character.name] %></p>
+      <p><%= f.select :character, @show.characters.map {|c| c.name}, selected: cue.character.name %></p>
+    </div>
+    <div class="col-xs-2">
+      <p><%= f.text_field :start_time, class: 'timestamp' %></p>
+      <p><%= f.text_field :end_time, class: 'timestamp' %></p>
+    </div>
+    <div class="col-xs-4">
+      <%= f.text_area :dialogue %>
+    </div>
+    <div class="col-xs-2">
+      <p><%= f.text_area :notes %></p>
+      <p><%= f.text_area :private_notes %></p>
+    </div>
+    <div class="col-xs-2">
+      <%= f.check_box :omit %>
+      <div class="text-right">
+        <%= f.submit "Save Changes", class: 'btn btn-sm btn-primary' %>
+      </div>
+    </div>
+  <% end %>
   <br class="clear"/>
   <hr class="single"/>
 <% end %>

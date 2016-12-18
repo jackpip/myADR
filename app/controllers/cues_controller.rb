@@ -6,9 +6,12 @@ class CuesController < ApplicationController
   end
 
   def update
+    @episode = Episode.find(params[:cue][:episode_id])
+    cue_params_ = cue_params
+    cue_params_[:character] = Character.find_by(name: cue_params_[:character])
     @cue = Cue.find(params[:id])
-    puts params.inspect
-    @cue.update_attributes(omit: params[:omit])
+    @cue.update_attributes(cue_params_)
+    redirect_to episode_path(@episode)
   end
 
   def create
