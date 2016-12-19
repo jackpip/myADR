@@ -22,7 +22,6 @@ class CharactersController < ApplicationController
   end
 
   def create
-    puts params.inspect
     @episode = Episode.find_by(token: params[:episode_token])
     @show = @episode.show
     @character = @show.characters.create(character_params)
@@ -32,7 +31,7 @@ class CharactersController < ApplicationController
   private
 
   def character_params
-    params.require(:character).permit(:name, :actor)
+    params.require(:character).permit(:name, :abbr, :actor)
   end
 
 end

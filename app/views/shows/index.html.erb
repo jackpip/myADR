@@ -13,8 +13,10 @@
     </div>
   </div>
 
+  <br />
+
   <% @shows.each do |show| %>
-    <%= link_to show.name, show_path(show) %>
+    <p><%= link_to show.name, show_path(show) %></p>
   <% end %>
 
 </div>
