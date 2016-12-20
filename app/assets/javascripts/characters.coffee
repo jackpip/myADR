@@ -14,4 +14,10 @@ $(document).on('turbolinks:load', ->
   $(".p-notes-button").click ->
     $(".p-notes").toggle()
 
+  $(document).keypress (e) ->
+    tag = e.target.tagName.toLowerCase()
+    if (e.key == '=' && tag != 'input' && tag != 'textarea')
+      $('#cue-creation').collapse('show')
+      $('#cue_character').focus()
+
 )
