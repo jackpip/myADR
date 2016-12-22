@@ -1,6 +1,19 @@
 <div class="text-center">
-  <h1>Series: <%= @show.name %></h1>
-  <h3>Episode: <%= @episode.episode_number %></h3>
+  <h1>
+    <%= form_for @show, action: 'update' do |f| %>
+      <%= f.hidden_field :episode_id, value: @episode.id %>
+      <%= f.label "Series: " %>
+      <%= f.text_field :name, class: 'text-center'%>
+      <%= f.submit 'Save', class: "btn btn-xs btn-primary" %>
+    <% end %>
+  </h1>
+  <h3>
+    <%= form_for @episode, action: 'update' do |f| %>
+      <%= f.label "Episode: " %>
+      <%= f.text_field :episode_number, class: 'text-center' %>
+      <%= f.submit 'Save', class: "btn btn-xs btn-primary" %>
+    <% end %>
+  </h3>
 </div>
 
 <div class="col-xs-6 hidden-print">
@@ -166,8 +179,10 @@
       <%= f.text_area :dialogue, class: "full-height" %>
     </div>
     <div class="col-xs-2">
+      <%= f.label "Public" %>
       <p><%= f.text_area :notes %></p>
-      <p><%= f.text_area :private_notes %></p>
+      <%= f.label "Private" %>
+      <p><em><%= f.text_area :private_notes %></em></p>
     </div>
     <div class="col-xs-2">
       <%= f.check_box :omit %>

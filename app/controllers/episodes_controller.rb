@@ -20,6 +20,12 @@ class EpisodesController < ApplicationController
     redirect_to show_path(@show)
   end
 
+  def update
+    @episode = Episode.find_by(token: params[:token])
+    @episode.update_attributes(episode_params)
+    redirect_to episode_path(@episode)
+  end
+
   private
 
   def episode_params

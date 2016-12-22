@@ -39,7 +39,7 @@
   <% end %>
     <div class="col-xs-2">
       <% if cue.between %>
-        <p><%= cue.character.abbr.upcase + '_' + "%03d" % character_cues[cue.character.name] + letters[character_subs[cue.character.name]] %></p>
+        <p><%= cue.character.abbr.upcase + '_' + "%03d" % (character_cues[cue.character.name]-1) + letters[character_subs[cue.character.name]] %></p>
         <% character_subs[cue.character.name] += 1 %>
       <% else %>
         <p><%= cue.character.abbr.upcase + '_' + "%03d" % character_cues[cue.character.name] %></p>
@@ -48,7 +48,7 @@
       <% end %>
       <p><%= cue.character.name %></p>
       <% if cue.omit %>
-        <h4>OMITTED</h4>
+        <h4><em><b>OMITTED</b></em></h4>
       <% end %>
     </div>
     <div class="col-xs-2">
@@ -57,15 +57,15 @@
     </div>
     <div class="col-xs-5">
       <% if cue.omit %>
-        <p class="omitted">"<%= cue.dialogue %>"</p><br />
-        <h4><%= cue.omit_notes %></h4>
+        <p class="omitted"><%= cue.dialogue %></p><br />
+        <h4><em><b><%= cue.omit_notes %></b></em></h4>
       <% else %>
-        "<%= cue.dialogue %>"
+        <%= cue.dialogue %>
       <% end %>
     </div>
     <div class="col-xs-3 notes">
       <p><%= cue.notes %></p>
-      <p class="p-notes"><%= cue.private_notes %></p>
+      <p class="p-notes"><em><%= cue.private_notes %></em></p>
     </div>
     <br class="clear"/>
     <hr class="single"/>
