@@ -10,6 +10,8 @@
       <%= f.hidden_field :episode_id, value: @episode.id %>
       <%= f.label :character %>
       <%= f.select :character, @show.characters.map {|c| c.name} %><br />
+      <%= f.label "Is this a sub-cue? " %>
+      <%= f.check_box :between %><br />
       <%= f.label :start_time %>
       <%= f.text_field :start_time, class: 'timestamp' %><br />
       <%= f.label :end_time %>
@@ -139,14 +141,22 @@
 <hr class="double"/>
 
 <% character_cues = Hash.new {|hash, key| hash[key] = 1 } %>
+<% letters = ('A'..'Z').to_a %>
+<% character_subs = Hash.new {|hash, key| hash[key] = 0 } %>
 
 <% @cues.each do |cue| %>
   <%= form_for cue, action: 'update' do |f| %>
     <%= f.hidden_field :episode_id, value: @episode.id %>
     <div class="col-xs-2">
       <p><%= f.select :character, @show.characters.map {|c| c.name}, selected: cue.character.name %></p>
-      <p><%= cue.character.abbr.upcase + '_' + "%03d" % character_cues[cue.character.name] %></p>
-      <% character_cues[cue.character.name] += 1 %>
+      <% if cue.between %>
+        <p><%= cue.character.abbr.upcase + '_' + "%03d" % (character_cues[cue.character.name]-1) + letters[character_subs[cue.character.name]] %></p>
+        <% character_subs[cue.character.name] += 1 %>
+      <% else %>
+        <p><%= cue.character.abbr.upcase + '_' + "%03d" % character_cues[cue.character.name] %></p>
+        <% character_cues[cue.character.name] += 1 %>
+        <% character_subs[cue.character.name] = 0 %>
+      <% end %>
     </div>
     <div class="col-xs-2">
       <p><%= f.text_field :start_time, class: 'timestamp' %></p>

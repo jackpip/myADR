@@ -28,6 +28,8 @@
 <hr class="double"/>
 
 <% character_cues = Hash.new {|hash, key| hash[key] = 001 } %>
+<% letters = ('A'..'Z').to_a %>
+<% character_subs = Hash.new {|hash, key| hash[key] = 0 } %>
 
 <% @cues.each do |cue| %>
   <% if cue.omit %>
@@ -36,8 +38,14 @@
     <div>
   <% end %>
     <div class="col-xs-2">
-      <p><%= cue.character.abbr.upcase + '_' + "%03d" % character_cues[cue.character.name] %></p>
-      <% character_cues[cue.character.name] += 1 %>
+      <% if cue.between %>
+        <p><%= cue.character.abbr.upcase + '_' + "%03d" % character_cues[cue.character.name] + letters[character_subs[cue.character.name]] %></p>
+        <% character_subs[cue.character.name] += 1 %>
+      <% else %>
+        <p><%= cue.character.abbr.upcase + '_' + "%03d" % character_cues[cue.character.name] %></p>
+        <% character_cues[cue.character.name] += 1 %>
+        <% character_subs[cue.character.name] = 0 %>
+      <% end %>
       <p><%= cue.character.name %></p>
       <% if cue.omit %>
         <h4>OMITTED</h4>
