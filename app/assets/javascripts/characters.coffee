@@ -24,6 +24,20 @@ $(document).on('turbolinks:load', ->
   $(".omitted-cue-button").click ->
     $(".omitted-cue").toggle()
 
+  status = $('#status')
+  timeoutId = true
+
+  $('.edit_cue, .edit_show, .edit_episode, .edit_character').keyup (e) ->
+    status.text('changes pending')
+    timer = true
+    if timer == true
+      clearTimeout(timeoutId)
+    timeoutId = setTimeout(( ->
+        this.submit()
+        status.text('changes saved')
+        timer = false
+    ).bind(this), 1000)
+
   $(document).keypress (e) ->
     tag = e.target.tagName.toLowerCase()
     if (e.key == '=' && tag != 'input' && tag != 'textarea')

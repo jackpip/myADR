@@ -11,7 +11,7 @@ class CuesController < ApplicationController
     cue_params_[:character] = Character.find_by(name: cue_params_[:character])
     @cue = Cue.find(params[:id])
     @cue.update_attributes(cue_params_)
-    redirect_to episode_path(@episode)
+    #redirect_to episode_path(@episode)
   end
 
   def create

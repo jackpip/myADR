@@ -26,7 +26,7 @@ class ShowsController < ApplicationController
     @show = Show.find(params[:id])
     @show.update_attributes(show_params)
     @episode = Episode.find(params[:show][:episode_id])
-    redirect_to episode_path(@episode)
+    #redirect_to episode_path(@episode)
   end
 
   private
