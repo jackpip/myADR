@@ -33,9 +33,9 @@
 
 <% @cues.each do |cue| %>
   <% if cue.omit %>
-    <div class="omitted-cue">
+    <div class="cue omitted-cue">
   <% else %>
-    <div>
+    <div class="cue">
   <% end %>
     <div class="col-xs-2">
       <% if cue.between %>
