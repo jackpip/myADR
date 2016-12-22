@@ -4,6 +4,7 @@ class EpisodesController < ApplicationController
   def show
     @episode = Episode.find_by(token: params[:token])
     @show = @episode.show
+    @characters = @show.characters
     @character = Character.new
     @cue = Cue.new
     @cues = @episode.cues.order(:start_time, :end_time)

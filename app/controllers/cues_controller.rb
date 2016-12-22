@@ -32,7 +32,7 @@ class CuesController < ApplicationController
   private
 
   def cue_params
-    params.require(:cue).permit(:start_time, :end_time, :dialogue, :notes, :private_notes, :called_by, :omit, :character, :episode_id)
+    params.require(:cue).permit(:start_time, :end_time, :dialogue, :notes, :private_notes, :called_by, :omit, :omit_notes, :character, :episode_id)
   end
 
 end

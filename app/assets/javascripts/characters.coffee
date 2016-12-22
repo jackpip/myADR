@@ -11,8 +11,18 @@ $(document).on('turbolinks:load', ->
       this.value += ":"
       #$(this).next('input').focus()
 
+  $(".notes-button").click ->
+    $(".notes").toggle()
+    if $(this).prop("checked") == true
+      $("#p-notes").show()
+    else
+      $("#p-notes").hide()
+
   $(".p-notes-button").click ->
     $(".p-notes").toggle()
+
+  $(".omitted-cue-button").click ->
+    $(".omitted-cue").toggle()
 
   $(document).keypress (e) ->
     tag = e.target.tagName.toLowerCase()
