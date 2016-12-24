@@ -1,6 +1,8 @@
-<div class="text-center">
-  <h1>Series: <%= @show.name %></h1>
-  <h3>Episode: <%= @episode.episode_number %></h3>
+<div class="text-center head">
+  <p><b>Series: <%= @show.name %></b></p>
+  <p><b>Episode: <%= @episode.episode_number %></b></p>
 </div>
 
+<div class="main">
 <%= render 'shared/cue_sheet' %>
+</div>

@@ -36,3 +36,13 @@ input[type=text], textarea {
 .cue {
   page-break-inside: avoid;
 }
+
+@media print {
+  .head {
+    position: fixed;
+    top: 0;
+  }
+  .main {
+    margin-top: 200px;
+  }
+}
