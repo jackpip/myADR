@@ -36,3 +36,7 @@ input[type=text], textarea {
 .cue {
   page-break-inside: avoid;
 }
+
+.title h3, .title h4 {
+  margin: 0;
+}
