@@ -1,5 +1,5 @@
 class ShowsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:update]
   before_action :require_authorized_for_current_show, only: [:show]
 
   def index
