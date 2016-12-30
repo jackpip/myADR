@@ -16,12 +16,14 @@
   </h3>
 </div>
 
+<br />
+
 <div>
   <%= link_to "<- Back to Episode List", show_path(@show) %>
 </div><br />
 
 <div class="col-xs-6 hidden-print">
-  <p class="add" data-toggle="collapse" data-target="#cue-creation">Add a Cue</p>
+  <p class="add" id="cue_collapse" data-toggle="collapse" data-target="#cue-creation">Add a Cue</p>
   <div id="cue-creation" class="collapse">
     <%= form_for @cue do |f| %>
       <%= f.hidden_field :episode_id, value: @episode.id %>
@@ -133,6 +135,17 @@
         <% end %>
       </ul>
     </div>
+  </div><br />
+
+  <p class="add text-right" data-toggle="collapse" data-target="#sharing">Share this episode</p>
+  <div id="sharing" class="collapse text-right">
+    <p>
+      <input type="text" class="js-copytext">
+      <button class="js-copytextbtn btn btn-sm btn-primary">Copy</button>
+    </p>
+    <% if user_signed_in? && @show.users.include?(current_user) %>
+      <%= link_to "Make this episode private (Generate new URL)", episode_path(@episode, episode:{token: @episode.generate_token}), method: :put, class: 'btn btn-sm btn-danger', data: {confirm: 'Are you sure? Previously shared links to this episode will no longer work.'} %>
+    <% end %>
   </div>
 </div>
 

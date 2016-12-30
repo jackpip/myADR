@@ -36,7 +36,7 @@ class EpisodesController < ApplicationController
   private
 
   def episode_params
-    params.require(:episode).permit(:episode_number)
+    params.require(:episode).permit(:episode_number, :token)
   end
 
 end

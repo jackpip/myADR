@@ -7,12 +7,16 @@ class Episode < ApplicationRecord
   validates :token, presence: true
   validates :token, uniqueness: true
 
-  before_validation :generate_token, on: :create
+  before_validation :save_token, on: :create
+
+  def save_token
+    begin
+      self.token = generate_token
+    end while self.class.find_by(token: token)
+  end
 
   def generate_token
-    begin
-      self.token = SecureRandom.urlsafe_base64(64, false)
-    end while self.class.find_by(token: token)
+    SecureRandom.urlsafe_base64(64, false)
   end
 
   def to_param

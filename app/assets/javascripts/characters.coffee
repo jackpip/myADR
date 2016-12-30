@@ -24,11 +24,22 @@ $(document).on('turbolinks:load', ->
   $(".omitted-cue-button").click ->
     $(".omitted-cue").toggle()
 
+  $(".js-copytext").val(window.location)
+
+  $(".js-copytextbtn").click (event) ->
+    $(".js-copytext").select()
+    try
+      successful = document.execCommand('copy')
+    catch err
+      console.log('Oops, unable to copy')
+
   $(document).keypress (e) ->
-    console.log(e)
     tag = e.target.tagName.toLowerCase()
     if (e.key == 'N' && e.shiftKey && tag != 'input' && tag != 'textarea')
       $('#cue-creation').collapse('show')
-      $('#cue_character').focus()
+      $('#new_cue #cue_character').focus()
+      $('html, body').stop().animate({
+          scrollTop: $('#cue_collapse').offset().top
+        }, 1000)
 
 )
