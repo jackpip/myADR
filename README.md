@@ -1,3 +1,3 @@
 # myADR
 
-A way for audio engineers to easily generate cue sheets.
+A simple way for audio engineers to generate and manage custom cue sheets.
