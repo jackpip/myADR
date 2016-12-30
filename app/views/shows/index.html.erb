@@ -7,7 +7,7 @@
     <div id="show-creation" class="collapse">
       <%= form_for @show do |f| %>
         <%= f.label :name %>
-        <%= f.text_field :name %><br />
+        <%= f.text_field :name %><br /><br />
         <%= f.submit "Add Show", class: "btn btn-primary" %>
       <% end %>
     </div>
@@ -16,7 +16,10 @@
   <br />
 
   <% @shows.each do |show| %>
-    <p><%= link_to show.name, show_path(show) %></p>
+    <p>
+      <%= link_to 'X', show_path(show), data: {confirm: 'Are you sure you want to permanently delete this show?'}, method: :delete, class: 'btn btn-xs btn-danger' %>
+      <%= link_to show.name, show_path(show) %>
+    </p>
   <% end %>
 
 </div>

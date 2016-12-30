@@ -1,7 +1,7 @@
 class Episode < ApplicationRecord
   belongs_to :show
   has_many :characters
-  has_many :cues
+  has_many :cues, dependent: :destroy
 
   validates :episode_number, presence: true
   validates :token, presence: true

@@ -3,12 +3,16 @@
   <h1><%= @show.name %></h1>
 
   <div>
+    <%= link_to "<- Back to Shows List", shows_path %>
+  </div><br />
+
+  <div>
     <p class="add" data-toggle="collapse" data-target="#episode-creation">Add an Episode</p>
     <div id="episode-creation" class="collapse">
       <%= form_for @episode do |f| %>
         <%= f.hidden_field :show_id, value: @show.id %>
         <%= f.label :episode_number %>
-        <%= f.text_field :episode_number %><br />
+        <%= f.text_field :episode_number %><br /><br />
         <%= f.submit "Add Episode", class: "btn btn-primary" %>
       <% end %>
     </div>
@@ -17,7 +21,10 @@
   <br />
 
   <% @episodes.each do |episode| %>
-    <p><%= link_to episode.episode_number, episode_path(episode) %></p>
+    <p>
+      <%= link_to 'X', episode_path(episode), data: {confirm: 'Are you sure you want to permanently delete this episode?'}, method: :delete, class: 'btn btn-xs btn-danger' %>
+      <%= link_to episode.episode_number, episode_path(episode) %>
+    </p>
   <% end %>
 
 </div>

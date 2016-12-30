@@ -16,6 +16,10 @@
   </h3>
 </div>
 
+<div>
+  <%= link_to "<- Back to Episode List", show_path(@show) %>
+</div><br />
+
 <div class="col-xs-6 hidden-print">
   <p class="add" data-toggle="collapse" data-target="#cue-creation">Add a Cue</p>
   <div id="cue-creation" class="collapse">
@@ -96,6 +100,7 @@
         </div>
         <div class="col-xs-2">
           <%= f.submit "Save", class: "btn btn-xs btn-primary"%>
+          <%= link_to 'X', episode_character_path(@episode, character), data: {confirm: 'Are you sure you want to permanently delete this character?'}, method: :delete, class: 'btn btn-xs btn-danger' %>
         </div>
         <br class="clear"/>
         <hr class="single"/>
@@ -191,7 +196,7 @@
     <div class="col-xs-1">
       <div class="text-right">
         <%= f.submit 'Save', class: 'btn btn-sm btn-primary' %><br /><br/>
-        <%= link_to 'Delete', cue_path(cue, episode: @episode), data: {confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-sm btn-danger' %>
+        <%= link_to 'X', cue_path(cue, episode: @episode), data: {confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-sm btn-danger' %>
       </div>
     </div>
   <% end %>

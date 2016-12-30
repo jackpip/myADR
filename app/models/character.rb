@@ -1,5 +1,5 @@
 class Character < ApplicationRecord
-  has_many :cues
+  has_many :cues, dependent: :destroy
   has_many :episodes
   belongs_to :show
 

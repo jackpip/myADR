@@ -25,8 +25,9 @@ $(document).on('turbolinks:load', ->
     $(".omitted-cue").toggle()
 
   $(document).keypress (e) ->
+    console.log(e)
     tag = e.target.tagName.toLowerCase()
-    if (e.key == '=' && tag != 'input' && tag != 'textarea')
+    if (e.key == 'N' && e.shiftKey && tag != 'input' && tag != 'textarea')
       $('#cue-creation').collapse('show')
       $('#cue_character').focus()
 

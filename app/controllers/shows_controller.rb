@@ -29,6 +29,12 @@ class ShowsController < ApplicationController
     redirect_to episode_path(@episode)
   end
 
+  def destroy
+    @show = Show.find(params[:id])
+    @show.destroy
+    redirect_to shows_path
+  end
+
   private
 
   def show_params

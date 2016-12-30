@@ -26,6 +26,13 @@ class EpisodesController < ApplicationController
     redirect_to episode_path(@episode)
   end
 
+  def destroy
+    @episode = Episode.find_by(token: params[:token])
+    @episode.destroy
+    @show = @episode.show
+    redirect_to show_path(@show)
+  end
+
   private
 
   def episode_params
