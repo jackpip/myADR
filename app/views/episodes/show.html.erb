@@ -55,8 +55,11 @@
     <div class="col-xs-4">
       Actor
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-2">
       Abbr.
+    </div>
+    <div class="col-xs-2">
+      # of Cues
     </div>
     <br class="clear"/>
     <hr class="double"/>
@@ -67,12 +70,23 @@
       <div class="col-xs-4">
         <%= character.actor %>
       </div>
-      <div class="col-xs-4">
+      <div class="col-xs-2">
         <%= character.abbr.upcase %>
+      </div>
+      <div class="col-xs-2">
+        <%= character.cues.where(episode: @episode).count %>
       </div>
       <br class="clear"/>
       <hr class="single"/>
     <% end %>
+      <div class="col-xs-10">
+        <b>All Characters</b>
+      </div>
+      <div class="col-xs-2">
+        <b><%= @episode.cues.count %></b>
+      </div>
+      <br class="clear"/>
+      <hr class="single"/>
   </div>
 
   <p data-toggle="collapse" data-target="#character-list-edit" class="add text-right">Edit Characters</p>
