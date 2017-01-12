@@ -151,6 +151,10 @@
     </div>
   </div><br />
 
+  <div class="text-right">
+    <%= link_to "Print Line Counts", "/episodes/#{@episode.token}/lines_count", class: "btn btn-primary" %>
+  </div><br />
+
   <p class="add text-right" data-toggle="collapse" data-target="#sharing">Share this episode</p>
   <div id="sharing" class="collapse text-right">
     <p>

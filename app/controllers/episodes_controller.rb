@@ -33,6 +33,11 @@ class EpisodesController < ApplicationController
     redirect_to show_path(@show)
   end
 
+  def lines_count
+    @episode = Episode.find_by(token: params[:token])
+    @show = @episode.show
+  end
+
   private
 
   def episode_params
