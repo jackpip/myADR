@@ -74,7 +74,7 @@
         <%= character.abbr.upcase %>
       </div>
       <div class="col-xs-2">
-        <%= character.cues.where(episode: @episode).count %>
+        <%= character.cues.where(episode: @episode, omit: [false,nil]).count %>
       </div>
       <br class="clear"/>
       <hr class="single"/>
@@ -83,7 +83,7 @@
         <b>All Characters</b>
       </div>
       <div class="col-xs-2">
-        <b><%= @episode.cues.count %></b>
+        <b><%= @episode.cues.where(omit: [false,nil]).count %></b>
       </div>
       <br class="clear"/>
       <hr class="single"/>
