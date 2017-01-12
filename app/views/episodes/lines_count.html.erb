@@ -29,20 +29,22 @@
   <br class="clear"/>
   <hr class="double"/>
   <% @show.characters.each do |character| %>
-    <div class="col-xs-4">
-      <%= character.name %>
-    </div>
-    <div class="col-xs-4">
-      <%= character.actor %>
-    </div>
-    <div class="col-xs-2">
-      <%= character.abbr.upcase %>
-    </div>
-    <div class="col-xs-2">
-      <%= character.cues.where(episode: @episode, omit: [false,nil]).count %>
-    </div>
-    <br class="clear"/>
-    <hr class="single"/>
+    <% if character.cues.where(episode: @episode, omit: [false,nil]).count > 0 %>
+      <div class="col-xs-4">
+        <%= character.name %>
+      </div>
+      <div class="col-xs-4">
+        <%= character.actor %>
+      </div>
+      <div class="col-xs-2">
+        <%= character.abbr.upcase %>
+      </div>
+      <div class="col-xs-2">
+        <%= character.cues.where(episode: @episode, omit: [false,nil]).count %>
+      </div>
+      <br class="clear"/>
+      <hr class="single"/>
+    <% end %>
   <% end %>
     <div class="col-xs-10">
       <b>All Characters</b>
