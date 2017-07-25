@@ -42,7 +42,19 @@ input[type=text], textarea {
 }
 
 .get-started {
-  height: 500px;
+  height: 750px;
+  background-image: url(mixer.jpg);
+  background-position: center -250px;
+  color: white;
+  margin: -20px;
+}
+
+.get-started h1 {
+  padding-top: 100px;
+}
+
+.navbar {
+  margin: 0;
 }
 
 .section {
@@ -52,7 +64,7 @@ input[type=text], textarea {
 }
 
 .light-blue {
-  background-color: #5bc0de;
+  background-color: #428bca;
   color: black;
 }
 
@@ -61,7 +73,22 @@ footer {
   background-color: black;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 .links {
-  padding: 50px;
+  padding-top: 50px;
+  padding-right: 50px;
   font-size: 20px;
+}
+
+.content {
+  min-height: 100%;
+}
+
+.section-text {
+  color: white;
+  padding-bottom: 25px;
 }
