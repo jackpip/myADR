@@ -23,14 +23,12 @@
 </div><br />
 
 <div class="col-xs-6 hidden-print">
-  <%= puts ("**********") %>
-  <%= puts(@episode.cues.last.character) %>
   <p class="add" id="cue_collapse" data-toggle="collapse" data-target="#cue-creation">Add a Cue</p>
   <div id="cue-creation" class="collapse">
     <%= form_for @cue do |f| %>
       <%= f.hidden_field :episode_id, value: @episode.id %>
       <%= f.label :character %>
-      <%= f.select :character, options_for_select(@show.characters.map {|c| c.name}, @episode.cues.last.character.name) %><br />
+      <%= f.select :character, options_for_select(@show.characters.map {|c| c.name}, @episode.cues.last == nil ? "Add a cue" : @episode.cues.last.character.name) %><br />
       <%= f.label "Is this a sub-cue? " %>
       <%= f.check_box :between %><br />
       <%= f.label :start_time %>
